@@ -1,4 +1,4 @@
-module github.com/ihsanardanto-djoin/go-whitelist
+module github.com/ihsanardanto-djoin/go-whitelist/wrapper/echo
 
 go 1.19
 
