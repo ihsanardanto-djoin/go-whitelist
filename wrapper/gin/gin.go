@@ -19,7 +19,7 @@ func IPWhitelistMiddleware(allowedIPs []string) gin.HandlerFunc {
 
 		// Check if the client's IP is in the whitelist
 		if !clientWList.IsIPAllowed(clientIP) {
-			c.AbortWithStatusJSON(http.StatusForbidden, "Forbidden\n")
+			c.AbortWithStatusJSON(http.StatusForbidden, "Forbidden, seharusnya tidak print hello world\n")
 			return
 		}
 		c.Next()
