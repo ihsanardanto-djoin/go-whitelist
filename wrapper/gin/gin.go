@@ -11,7 +11,7 @@ func IPWhitelistMiddleware(allowedIPs []string) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		clientIP, err := gowhitelist.GetClientIP(c.Request)
 		if err != nil {
-			c.AbortWithStatusJSON(http.StatusUnauthorized, "Unauthorized, IP Client not detected\n")
+			c.AbortWithStatusJSON(http.StatusUnauthorized, "Unauthorized, IP Client not detected")
 			return
 		}
 
@@ -19,7 +19,7 @@ func IPWhitelistMiddleware(allowedIPs []string) gin.HandlerFunc {
 
 		// Check if the client's IP is in the whitelist
 		if !clientWList.IsIPAllowed(clientIP) {
-			c.AbortWithStatusJSON(http.StatusForbidden, "Forbidden, seharusnya tidak print hello world\n")
+			c.AbortWithStatusJSON(http.StatusForbidden, "Forbidden")
 			return
 		}
 		c.Next()
