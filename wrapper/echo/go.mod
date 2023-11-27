@@ -3,6 +3,7 @@ module github.com/ihsanardanto-djoin/go-whitelist/wrapper/echo
 go 1.19
 
 require (
+	github.com/ihsanardanto-djoin/go-whitelist v0.0.0-20231123083449-db4ff8beeb10 // indirect
 	github.com/labstack/echo/v4 v4.11.3 // indirect
 	github.com/labstack/gommon v0.4.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
