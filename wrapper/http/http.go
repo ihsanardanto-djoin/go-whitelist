@@ -9,7 +9,6 @@ import (
 func IPWhitelistMiddleware(allowedIPs []string) func(http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			var rw *responseWriter
 
 			clientIP, err := gowhitelist.GetClientIP(r)
 			if err != nil {
@@ -26,7 +25,7 @@ func IPWhitelistMiddleware(allowedIPs []string) func(http.Handler) http.Handler 
 			}
 
 			// Serve the next handler
-			next.ServeHTTP(rw, r)
+			next.ServeHTTP(w, r)
 		})
 	}
 }
@@ -34,8 +33,7 @@ func IPWhitelistMiddleware(allowedIPs []string) func(http.Handler) http.Handler 
 // Custom responseWriter to capture status code
 type responseWriter struct {
 	http.ResponseWriter
-	status  int
-	message string
+	status int
 }
 
 func (rw *responseWriter) WriteHeader(code int) {
